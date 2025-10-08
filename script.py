@@ -90,6 +90,27 @@ textarea:focus {
     color: #fff !important;
 }
 
+/* Add bottom spacing to form and containers */
+.stForm {
+    margin-bottom: 120px !important;
+    padding-bottom: 120px !important;
+}
+
+form {
+    margin-bottom: 120px !important;
+    padding-bottom: 120px !important;
+}
+
+[data-testid="stForm"] {
+    margin-bottom: 120px !important;
+    padding-bottom: 120px !important;
+}
+
+.element-container:last-child {
+    margin-bottom: 120px !important;
+    padding-bottom: 120px !important;
+}
+
 </style>
 
 <script>
