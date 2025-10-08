@@ -38,6 +38,18 @@ div.stButton > button:hover, button[kind="primary"]:hover, button[kind="secondar
 header {visibility: hidden;}
 .streamlit-footer {display: none;}
 .st-emotion-cache-uf99v8 {display: none;}
+
+/* Hide Streamlit branding and toolbar */
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+.stDeployButton {display: none;}
+.viewerBadge_container__1QSob {display: none;}
+.styles_viewerBadge__1yB5_ {display: none;}
+[data-testid="stToolbar"] {display: none;}
+[data-testid="stDecoration"] {display: none;}
+[data-testid="stStatusWidget"] {display: none;}
+.css-18e3th9 {padding-top: 0 !important;}
+.css-1d391kg {padding-top: 0 !important;}
 .st-emotion-cache-e1lln2w80 {
     border: 0.5px solid #4a4a4a;
     background-color: #2a2b30;
