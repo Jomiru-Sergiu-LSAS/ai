@@ -67,10 +67,7 @@ div[data-testid="stBottom"] {display: none !important;}
 .stApp [data-testid="stBottomBlockContainer"] {display: none !important;}
 
 /* Remove any white frames/borders */
-.main .block-container {
-    padding-top: 1rem !important;
-    padding-bottom: 120px !important;
-}
+.main .block-container {padding-top: 1rem !important;}
 section[data-testid="stSidebar"] {display: none !important;}
 
 /* Textarea styling to match background */
@@ -88,27 +85,6 @@ textarea:focus {
 .stTextArea textarea {
     background-color: #2a2b30 !important;
     color: #fff !important;
-}
-
-/* Add bottom spacing to form and containers */
-.stForm {
-    margin-bottom: 120px !important;
-    padding-bottom: 120px !important;
-}
-
-form {
-    margin-bottom: 120px !important;
-    padding-bottom: 120px !important;
-}
-
-[data-testid="stForm"] {
-    margin-bottom: 120px !important;
-    padding-bottom: 120px !important;
-}
-
-.element-container:last-child {
-    margin-bottom: 120px !important;
-    padding-bottom: 120px !important;
 }
 
 </style>
@@ -156,7 +132,6 @@ window.addEventListener('load', function() {
 .stApp {
     color: #fff;
     background-color: #2a2b30;
-    padding-bottom: 120px !important;
 }
 .st-bc {
     border: 0.5px solid #4a4a4a;
