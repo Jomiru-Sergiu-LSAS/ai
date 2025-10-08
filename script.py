@@ -41,17 +41,22 @@ header {visibility: hidden !important;}
 
 /* Hide Streamlit branding and toolbar - all variations */
 #MainMenu {visibility: hidden !important;}
+header {visibility: hidden !important; display: none !important;}
+.stApp > header {display: none !important;}
 footer {visibility: hidden !important;}
 footer::after {display: none !important;}
 .stDeployButton {display: none !important;}
 .viewerBadge_container__1QSob {display: none !important;}
 .styles_viewerBadge__1yB5_ {display: none !important;}
-[data-testid="stToolbar"] {display: none !important;}
+[data-testid="stToolbar"] {visibility: hidden !important; display: none !important;}
 [data-testid="stDecoration"] {display: none !important;}
 [data-testid="stStatusWidget"] {display: none !important;}
 [data-testid="manage-app"] {display: none !important;}
+[data-testid="stHeader"] {display: none !important;}
 .css-18e3th9 {padding-top: 0 !important;}
 .css-1d391kg {padding-top: 0 !important;}
+.st-emotion-cache-18ni7ap {display: none !important;}
+.st-emotion-cache-vk3wp9 {display: none !important;}
 
 /* Hide "Made with Streamlit" and similar badges */
 a[href*="streamlit.io"] {display: none !important;}
@@ -65,12 +70,33 @@ div[data-testid="stBottom"] {display: none !important;}
 .main .block-container {padding-top: 1rem !important;}
 section[data-testid="stSidebar"] {display: none !important;}
 
+/* Textarea styling to match background */
+textarea {
+    background-color: #2a2b30 !important;
+    color: #fff !important;
+    border: 0.5px solid #4a4a4a !important;
+}
+
+textarea:focus {
+    background-color: #2a2b30 !important;
+    border-color: #6bb6ff !important;
+}
+
+.stTextArea textarea {
+    background-color: #2a2b30 !important;
+    color: #fff !important;
+}
+
 </style>
 
 <script>
 // Force remove Streamlit branding after page load
 window.addEventListener('load', function() {
     setTimeout(function() {
+        // Remove all header elements
+        document.querySelectorAll('header').forEach(el => el.remove());
+        document.querySelectorAll('[data-testid="stHeader"]').forEach(el => el.remove());
+
         // Remove all footer elements
         document.querySelectorAll('footer').forEach(el => el.remove());
 
@@ -87,6 +113,7 @@ window.addEventListener('load', function() {
         document.querySelectorAll('[data-testid="stStatusWidget"]').forEach(el => el.remove());
         document.querySelectorAll('[data-testid="manage-app"]').forEach(el => el.remove());
         document.querySelectorAll('[data-testid="stBottom"]').forEach(el => el.remove());
+        document.querySelectorAll('#MainMenu').forEach(el => el.remove());
     }, 100);
 });
 </script>
