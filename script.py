@@ -69,7 +69,7 @@ div[data-testid="stBottom"] {display: none !important;}
 /* Remove any white frames/borders */
 .main .block-container {
     padding-top: 1rem !important;
-    padding-bottom: 60px !important;
+    padding-bottom: 120px !important;
 }
 section[data-testid="stSidebar"] {display: none !important;}
 
@@ -135,7 +135,7 @@ window.addEventListener('load', function() {
 .stApp {
     color: #fff;
     background-color: #2a2b30;
-    padding-bottom: 60px !important;
+    padding-bottom: 120px !important;
 }
 .st-bc {
     border: 0.5px solid #4a4a4a;
