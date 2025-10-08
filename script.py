@@ -436,12 +436,12 @@ with st.form('my_form'):
     query = st.text_area('Enter question:', 'Type here...')
     
     # Create two columns for the buttons
-    col1, col2, _ = st.columns([2, 4, 3])
+    col1, col2 = st.columns(2)
 
     with col1:
-        submitted = st.form_submit_button('Submit question')
+        submitted = st.form_submit_button('Submit question', use_container_width=True)
     with col2:
-        random_button = st.form_submit_button("Generate random sample question")
+        random_button = st.form_submit_button("Generate random sample question", use_container_width=True)
 
     # If random_button is clicked, update the query with random_text
     if random_button:
