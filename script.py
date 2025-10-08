@@ -67,18 +67,8 @@ div[data-testid="stBottom"] {display: none !important;}
 .stApp [data-testid="stBottomBlockContainer"] {display: none !important;}
 
 /* Remove any white frames/borders */
-.main .block-container {
-    padding-top: 1rem !important;
-}
+.main .block-container {padding-top: 1rem !important;}
 section[data-testid="stSidebar"] {display: none !important;}
-
-/* Add spacer at bottom to prevent content scrolling under overlay */
-.main .block-container::after {
-    content: "";
-    display: block;
-    height: 60px;
-    width: 100%;
-}
 
 /* Textarea styling to match background */
 textarea {
