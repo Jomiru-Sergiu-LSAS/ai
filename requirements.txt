@@ -1,0 +1,18 @@
+openai 
+langchain
+langchain-openai
+langchain-community
+langchain-core
+langchain_pinecone
+langchain[docarray]
+langchain-chroma
+chromadb==0.5.3
+docarray
+pydantic==1.10.8
+python-dotenv
+pinecone-client 
+scikit-learn
+ruff
+beautifulsoup4
+streamlit
+C:/Program Files/AGI/STK 12/bin/AgPythonAPI/agi.stk12-12.6.0-py3-none-any.whl
