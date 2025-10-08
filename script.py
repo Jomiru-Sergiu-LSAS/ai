@@ -35,21 +35,63 @@ div.stButton > button:hover, button[kind="primary"]:hover, button[kind="secondar
     box-shadow: 0 4px 12px rgba(74, 144, 226, 0.4) !important;
 }
 
-header {visibility: hidden;}
-.streamlit-footer {display: none;}
-.st-emotion-cache-uf99v8 {display: none;}
+header {visibility: hidden !important;}
+.streamlit-footer {display: none !important;}
+.st-emotion-cache-uf99v8 {display: none !important;}
 
-/* Hide Streamlit branding and toolbar */
-#MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
-.stDeployButton {display: none;}
-.viewerBadge_container__1QSob {display: none;}
-.styles_viewerBadge__1yB5_ {display: none;}
-[data-testid="stToolbar"] {display: none;}
-[data-testid="stDecoration"] {display: none;}
-[data-testid="stStatusWidget"] {display: none;}
+/* Hide Streamlit branding and toolbar - all variations */
+#MainMenu {visibility: hidden !important;}
+footer {visibility: hidden !important;}
+footer::after {display: none !important;}
+.stDeployButton {display: none !important;}
+.viewerBadge_container__1QSob {display: none !important;}
+.styles_viewerBadge__1yB5_ {display: none !important;}
+[data-testid="stToolbar"] {display: none !important;}
+[data-testid="stDecoration"] {display: none !important;}
+[data-testid="stStatusWidget"] {display: none !important;}
+[data-testid="manage-app"] {display: none !important;}
 .css-18e3th9 {padding-top: 0 !important;}
 .css-1d391kg {padding-top: 0 !important;}
+
+/* Hide "Made with Streamlit" and similar badges */
+a[href*="streamlit.io"] {display: none !important;}
+[class*="viewerBadge"] {display: none !important;}
+[class*="ViewerBadge"] {display: none !important;}
+div[data-testid="stBottom"] {display: none !important;}
+.stApp > footer {display: none !important;}
+.stApp [data-testid="stBottomBlockContainer"] {display: none !important;}
+
+/* Remove any white frames/borders */
+.main .block-container {padding-top: 1rem !important;}
+section[data-testid="stSidebar"] {display: none !important;}
+
+</style>
+
+<script>
+// Force remove Streamlit branding after page load
+window.addEventListener('load', function() {
+    setTimeout(function() {
+        // Remove all footer elements
+        document.querySelectorAll('footer').forEach(el => el.remove());
+
+        // Remove viewer badge
+        document.querySelectorAll('[class*="viewerBadge"]').forEach(el => el.remove());
+        document.querySelectorAll('[class*="ViewerBadge"]').forEach(el => el.remove());
+
+        // Remove links to streamlit.io
+        document.querySelectorAll('a[href*="streamlit.io"]').forEach(el => el.remove());
+
+        // Remove toolbar
+        document.querySelectorAll('[data-testid="stToolbar"]').forEach(el => el.remove());
+        document.querySelectorAll('[data-testid="stDecoration"]').forEach(el => el.remove());
+        document.querySelectorAll('[data-testid="stStatusWidget"]').forEach(el => el.remove());
+        document.querySelectorAll('[data-testid="manage-app"]').forEach(el => el.remove());
+        document.querySelectorAll('[data-testid="stBottom"]').forEach(el => el.remove());
+    }, 100);
+});
+</script>
+
+<style>
 .st-emotion-cache-e1lln2w80 {
     border: 0.5px solid #4a4a4a;
     background-color: #2a2b30;
