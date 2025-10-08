@@ -69,10 +69,18 @@ div[data-testid="stBottom"] {display: none !important;}
 /* Remove any white frames/borders */
 .main .block-container {
     padding-top: 1rem !important;
-    padding-bottom: 60px !important;
+    margin-bottom: 0 !important;
 }
 section[data-testid="stSidebar"] {display: none !important;}
 .main {
+    margin-bottom: 0 !important;
+    max-height: calc(100vh - 60px) !important;
+}
+.stApp {
+    max-height: 100vh !important;
+    overflow: hidden !important;
+}
+section.main {
     padding-bottom: 60px !important;
 }
 
