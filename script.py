@@ -1,5 +1,6 @@
 import os
 import random
+import time
 import streamlit as st
 from langchain_openai.chat_models import ChatOpenAI
 from langchain_core.output_parsers import StrOutputParser
@@ -12,6 +13,13 @@ from langchain_chroma import Chroma
 from operator import itemgetter
 
 st.set_page_config(page_title="UMABot (Support)", page_icon="🌐")
+
+# Keep-alive mechanism - prevents session from timing out
+if 'last_activity' not in st.session_state:
+    st.session_state.last_activity = time.time()
+
+# Update activity timestamp
+st.session_state.last_activity = time.time()
 
 st.markdown(
     """
