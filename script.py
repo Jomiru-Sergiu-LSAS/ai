@@ -491,3 +491,13 @@ with st.form('my_form'):
                 metadata = context.metadata
                 source = f"[{metadata['url']}](https://{metadata['url']})"
                 st.markdown(source, unsafe_allow_html=True)
+
+# Hidden keep-alive element (invisible to user)
+st.markdown(
+    f"""
+    <div style="display: none;" id="keep-alive-indicator">
+        Session active: {st.session_state.last_activity}
+    </div>
+    """,
+    unsafe_allow_html=True
+)
