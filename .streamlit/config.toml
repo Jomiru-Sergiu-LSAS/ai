@@ -1,6 +1,10 @@
 [server]
 enableCORS = false
 enableXsrfProtection = false
+maxUploadSize = 200
+headless = true
+runOnSave = true
+enableWebsocketCompression = true
 
 [browser]
 gatherUsageStats = false
