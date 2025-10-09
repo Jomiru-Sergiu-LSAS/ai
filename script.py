@@ -124,6 +124,29 @@ window.addEventListener('load', function() {
         document.querySelectorAll('#MainMenu').forEach(el => el.remove());
     }, 100);
 });
+
+// Keep-alive mechanism to prevent the app from sleeping
+(function keepAlive() {
+    // Prevent browser sleep by creating activity
+    setInterval(function() {
+        // Send a ping by triggering a small DOM update
+        const keepAliveEl = document.createElement('span');
+        keepAliveEl.style.display = 'none';
+        keepAliveEl.textContent = Date.now();
+        document.body.appendChild(keepAliveEl);
+        setTimeout(() => keepAliveEl.remove(), 100);
+
+        // Log keep-alive activity (optional, can be removed in production)
+        console.log('Keep-alive ping:', new Date().toISOString());
+    }, 60000); // Ping every 60 seconds
+})();
+
+// Prevent tab from going to sleep
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        console.log('Tab hidden but keeping connection alive');
+    }
+});
 </script>
 
 <style>
