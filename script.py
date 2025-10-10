@@ -254,6 +254,11 @@ st.markdown(
         </div>
         <h2 style="margin: -10px 0 0 0; color: #f3f3f7; font-size: 1.8em; font-weight: 600;">   LSAS AI Help Agent</h2>
     </div>
+    <style>
+    .main .block-container {
+        margin-top: -20px !important;
+    }
+    </style>
     """,
     unsafe_allow_html=True
 )
