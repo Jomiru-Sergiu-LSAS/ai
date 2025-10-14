@@ -26,13 +26,13 @@ An Apify Actor that keeps your Streamlit app awake by pinging it at regular inte
   - Default: `https://lsas-terminal.streamlit.app/`
 
 - **Ping Interval** (optional): How often to ping the app in minutes
-  - Default: `10` minutes
+  - Default: `5` minutes
   - Range: 1-60 minutes
-  - Recommended: 5-15 minutes for optimal keepalive
+  - Recommended: 5-10 minutes for optimal keepalive
 
 - **Maximum Pings** (optional): Total number of pings before stopping
-  - Default: `144` (24 hours with 10-minute intervals)
-  - Set higher for longer monitoring periods
+  - Default: `6` (30 minutes with 5-minute intervals - free tier friendly)
+  - For paid tier: Use 144+ for longer monitoring periods
 
 - **Request Timeout** (optional): Maximum wait time for response in milliseconds
   - Default: `30000` (30 seconds)
@@ -83,19 +83,45 @@ An Apify Actor that keeps your Streamlit app awake by pinging it at regular inte
 
 To keep your Streamlit app permanently awake, set up a scheduled run:
 
+### Important: Timeout Configuration
+
+**Before running**, configure the timeout to avoid premature termination:
+
+1. Click **"Advanced configuration"** or the gear icon ⚙️
+2. Set **"Timeout"** based on your configuration:
+   - Free tier: `3600` seconds (1 hour) - run hourly
+   - Paid tier: `86400` seconds (24 hours) - run daily
+
+### Free Tier Schedule (Recommended for most users)
+
 1. In Apify Console, go to your actor
 2. Click **Schedule** tab
 3. Create a new schedule:
-   - **Frequency**: Every 24 hours (or as needed)
-   - **Input**: Configure your parameters
-   - **Timeout**: Set to at least 24 hours for continuous monitoring
+   - **Frequency**: Every 1 hour
+   - **Timeout**: 3600 seconds (1 hour)
+   - **Input**:
+     ```json
+     {
+       "intervalMinutes": 5,
+       "maxPings": 6
+     }
+     ```
 
-**Recommended Schedule**:
-- Run the actor every 24 hours
-- Set `maxPings` to `144` (24 hours with 10-minute intervals)
-- Set `intervalMinutes` to `10`
+This runs for ~30 minutes every hour, pinging every 5 minutes (6 pings total per run).
 
-This will ensure your app is pinged every 10 minutes, 24/7.
+### Paid Tier Schedule (For continuous 24/7 monitoring)
+
+- **Frequency**: Every 24 hours
+- **Timeout**: 86400 seconds (24 hours)
+- **Input**:
+  ```json
+  {
+    "intervalMinutes": 10,
+    "maxPings": 144
+  }
+  ```
+
+This ensures your app is pinged every 10 minutes, 24/7.
 
 ## Output
 
@@ -122,7 +148,17 @@ Overall statistics stored in `statistics` key:
 
 ## Example Usage
 
-### Basic Configuration
+### Free Tier - Hourly Schedule (Recommended)
+```json
+{
+  "streamlitUrl": "https://lsas-terminal.streamlit.app/",
+  "intervalMinutes": 5,
+  "maxPings": 6
+}
+```
+Schedule: Every 1 hour with 1-hour timeout
+
+### Paid Tier - Daily Schedule (24/7 monitoring)
 ```json
 {
   "streamlitUrl": "https://lsas-terminal.streamlit.app/",
@@ -130,24 +166,17 @@ Overall statistics stored in `statistics` key:
   "maxPings": 144
 }
 ```
+Schedule: Every 24 hours with 24-hour timeout
 
-### Extended Monitoring (7 days)
-```json
-{
-  "streamlitUrl": "https://lsas-terminal.streamlit.app/",
-  "intervalMinutes": 10,
-  "maxPings": 1008
-}
-```
-
-### Quick Checks (every 5 minutes)
+### Custom - 2 Hour Monitoring Window
 ```json
 {
   "streamlitUrl": "https://lsas-terminal.streamlit.app/",
   "intervalMinutes": 5,
-  "maxPings": 288
+  "maxPings": 24
 }
 ```
+Schedule: Every 2 hours with 2-hour timeout
 
 ## Cost Estimation
 
@@ -165,19 +194,24 @@ View your actor runs in the Apify Console:
 
 ## Troubleshooting
 
+**Actor timing out after 5-6 minutes?**
+- This is the default Apify timeout (300 seconds)
+- **Solution**: Click "Advanced configuration" ⚙️ before running
+- Set timeout to match your run duration:
+  - 30 min run = 3600 seconds
+  - 1 hour run = 3600 seconds
+  - 24 hour run = 86400 seconds
+
 **App still going to sleep?**
 - Reduce `intervalMinutes` to 5 minutes
-- Ensure the scheduled actor is running continuously
+- Increase schedule frequency (run every hour instead of every 24 hours)
 - Check the dataset for any failed pings
 
 **Too many failed pings?**
-- Increase `timeout` value
+- Increase `timeout` value in input parameters
 - Check if your Streamlit app URL is correct
 - Verify your app is publicly accessible
-
-**Actor timing out?**
-- Reduce `maxPings` value
-- Increase actor timeout in schedule settings
+- Some Streamlit apps return 303 redirects (this is normal and counts as success)
 
 ## License
 
