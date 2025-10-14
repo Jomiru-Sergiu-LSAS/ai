@@ -1,0 +1,43 @@
+{
+  "actorSpecification": 1,
+  "name": "streamlit-keepalive",
+  "title": "Streamlit Keepalive Monitor",
+  "version": "1.0.0",
+  "description": "Keeps Streamlit apps awake by pinging them at regular intervals to prevent sleep mode. Monitors uptime and logs response times.",
+  "dockerfile": "./Dockerfile",
+  "readme": "./README.md",
+  "input": "./input_schema.json",
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "title": "Ping Results",
+      "description": "Stores results of each ping attempt including timestamp, status, and response time",
+      "views": {
+        "overview": {
+          "title": "Overview",
+          "transformation": {
+            "fields": [
+              "timestamp",
+              "status",
+              "statusCode",
+              "responseTime",
+              "error"
+            ]
+          },
+          "display": {
+            "component": "table",
+            "properties": {
+              "columns": [
+                { "field": "timestamp", "title": "Timestamp" },
+                { "field": "status", "title": "Status" },
+                { "field": "statusCode", "title": "HTTP Code" },
+                { "field": "responseTime", "title": "Response Time (ms)" },
+                { "field": "error", "title": "Error" }
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "title": "Streamlit Keepalive Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "streamlitUrl": {
+      "title": "Streamlit App URL",
+      "type": "string",
+      "description": "The URL of your Streamlit app to keep alive",
+      "default": "https://lsas-terminal.streamlit.app/",
+      "editor": "textfield",
+      "example": "https://your-app.streamlit.app/"
+    },
+    "intervalMinutes": {
+      "title": "Ping Interval (minutes)",
+      "type": "integer",
+      "description": "How often to ping the app (in minutes). Recommended: 5-15 minutes",
+      "default": 10,
+      "minimum": 1,
+      "maximum": 60,
+      "editor": "number"
+    },
+    "maxPings": {
+      "title": "Maximum Number of Pings",
+      "type": "integer",
+      "description": "Total number of pings before the actor stops. Set higher for longer monitoring periods.",
+      "default": 144,
+      "minimum": 1,
+      "maximum": 10000,
+      "editor": "number"
+    },
+    "timeout": {
+      "title": "Request Timeout (ms)",
+      "type": "integer",
+      "description": "Maximum time to wait for a response in milliseconds",
+      "default": 30000,
+      "minimum": 5000,
+      "maximum": 120000,
+      "editor": "number"
+    },
+    "userAgent": {
+      "title": "User Agent",
+      "type": "string",
+      "description": "Custom User-Agent header for requests",
+      "default": "Apify-Keepalive-Bot/1.0",
+      "editor": "textfield"
+    }
+  },
+  "required": []
+}
