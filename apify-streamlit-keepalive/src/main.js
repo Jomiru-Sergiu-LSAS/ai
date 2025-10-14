@@ -14,7 +14,7 @@ try {
     const {
         streamlitUrl = 'https://lsas-terminal.streamlit.app/',
         intervalMinutes = 5,
-        maxPings = 6, // 30 minutes with 5 minute intervals (free tier friendly)
+        maxPings = 1, // Single ping per run - let scheduler handle repetition
         timeout = 30000, // 30 seconds
         userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
     } = input || {};

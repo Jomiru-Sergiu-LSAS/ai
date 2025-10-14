@@ -14,7 +14,7 @@
     "intervalMinutes": {
       "title": "Ping Interval (minutes)",
       "type": "integer",
-      "description": "How often to ping the app (in minutes). For free tier: use 5 minutes with 6 pings (30 min total), schedule every hour.",
+      "description": "Interval between pings within a single run (only used if maxPings > 1). For single-ping runs, use Apify scheduler to control frequency.",
       "default": 5,
       "minimum": 1,
       "maximum": 60,
@@ -23,8 +23,8 @@
     "maxPings": {
       "title": "Maximum Number of Pings",
       "type": "integer",
-      "description": "Total number of pings before the actor stops. For free tier: use 6 pings with 5-minute intervals (30 min runs), schedule every hour.",
-      "default": 6,
+      "description": "Total number of pings before the actor stops. Default: 1 (recommended - let scheduler handle repetition)",
+      "default": 1,
       "minimum": 1,
       "maximum": 10000,
       "editor": "number"
