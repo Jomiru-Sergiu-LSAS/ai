@@ -1,0 +1,27 @@
+{
+  "name": "streamlit-keepalive",
+  "version": "1.0.0",
+  "description": "Apify Actor to keep Streamlit apps awake by pinging them regularly",
+  "type": "module",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "apify",
+    "streamlit",
+    "keepalive",
+    "uptime",
+    "monitoring"
+  ],
+  "author": "Jomiru Sergiu",
+  "license": "MIT",
+  "dependencies": {
+    "apify": "^3.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jomirusergiu/streamlit-keepalive"
+  }
+}
