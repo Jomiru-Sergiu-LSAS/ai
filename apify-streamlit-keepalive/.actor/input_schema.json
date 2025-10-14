@@ -14,8 +14,8 @@
     "intervalMinutes": {
       "title": "Ping Interval (minutes)",
       "type": "integer",
-      "description": "How often to ping the app (in minutes). Recommended: 5-15 minutes",
-      "default": 10,
+      "description": "How often to ping the app (in minutes). For free tier: use 5 minutes with 6 pings (30 min total), schedule every hour.",
+      "default": 5,
       "minimum": 1,
       "maximum": 60,
       "editor": "number"
@@ -23,8 +23,8 @@
     "maxPings": {
       "title": "Maximum Number of Pings",
       "type": "integer",
-      "description": "Total number of pings before the actor stops. Set higher for longer monitoring periods.",
-      "default": 144,
+      "description": "Total number of pings before the actor stops. For free tier: use 6 pings with 5-minute intervals (30 min runs), schedule every hour.",
+      "default": 6,
       "minimum": 1,
       "maximum": 10000,
       "editor": "number"
